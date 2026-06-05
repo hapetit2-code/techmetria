@@ -1,43 +1,203 @@
+Imádom az ötletet! A Techmetria zseniálisan jó név, sokkal komolyabb, professzionálisabb hangzása van.
+
+Ha már szintet lépünk, adjunk neki egy teljesen modern, letisztult, "Cyberpunk-Tech" dizájnt: sötétített paletta, neonszín kiemelések, finom animációk a kártyákon, és egy CSS-ből felépített, elegáns logó ikon a név mellett, hogy ne kelljen képekkel bajlódni.
+
+Íme a Techmetria teljes, új kezdő HTML kódja. Ezt másold be a GitHubon az index.html-be a régi helyére:
+
+HTML
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Tech Pulse - Fully AI-Generated News</title>
+    <title>Techmetria - Autonóm Tech Hírek</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background-color: #0f172a; color: #f8fafc; margin: 0; padding: 0; }
-        header { background-color: #1e293b; padding: 20px; text-align: center; border-bottom: 2px solid #3b82f6; }
-        header h1 { margin: 0; color: #3b82f6; font-size: 2.5rem; }
-        header p { margin: 5px 0 0 0; color: #94a3b8; }
-        .container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
-        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .card { background-color: #1e293b; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
-        .card-content { padding: 20px; }
-        .card-tag { background-color: #3b82f6; color: white; font-size: 0.8rem; padding: 3px 8px; border-radius: 4px; text-transform: uppercase; }
-        .card h2 { font-size: 1.4rem; margin: 15px 0 10px 0; color: #fff; }
-        .card p { color: #94a3b8; font-size: 0.95rem; line-height: 1.5; white-space: pre-line; }
-        footer { text-align: center; padding: 20px; color: #64748b; margin-top: 50px; }
+        :root {
+            --bg-main: #090d16;
+            --bg-card: #131a2c;
+            --accent: #00f2fe;
+            --accent-gradient: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+            --text-main: #f1f5f9;
+            --text-muted: #64748b;
+        }
+
+        body { 
+            font-family: 'Segoe UI', Roboto, sans-serif; 
+            background-color: var(--bg-main); 
+            color: var(--text-main); 
+            margin: 0; 
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* FRANKÓ LOGÓ ÉS HEADER */
+        header { 
+            background-color: rgba(19, 26, 44, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 25px 20px; 
+            text-align: center; 
+            border-bottom: 1px solid rgba(0, 242, 254, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Beépített geometrikus tech logó */
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent-gradient);
+            border-radius: 6px;
+            position: relative;
+            transform: rotate(45deg);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+        }
+
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            width: 50%;
+            height: 50%;
+            background: var(--bg-main);
+            border-radius: 2px;
+        }
+
+        header h1 { 
+            margin: 0; 
+            font-size: 2.2rem; 
+            font-weight: 800;
+            letter-spacing: 1px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p { 
+            margin: 8px 0 0 0; 
+            color: var(--text-muted); 
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .container { 
+            max-width: 1100px; 
+            margin: 40px auto; 
+            padding: 0 20px; 
+        }
+
+        .news-grid { 
+            display: flex;
+            flex-direction: column;
+            gap: 30px; 
+        }
+
+        /* CSINOSÍTOTT KÁRTYÁK */
+        .card { 
+            background-color: var(--bg-card); 
+            border-radius: 12px; 
+            overflow: hidden; 
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+            transition: all 0.3s ease;
+        }
+
+        .card:hover { 
+            transform: translateY(-3px); 
+            border-color: rgba(0, 242, 254, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 242, 254, 0.08);
+        }
+
+        .card-content { 
+            padding: 30px; 
+        }
+
+        .card-header-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .card-tag { 
+            background: rgba(0, 242, 254, 0.1); 
+            color: var(--accent); 
+            font-size: 0.75rem; 
+            padding: 4px 10px; 
+            border-radius: 20px; 
+            font-weight: 600;
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+            border: 1px solid rgba(0, 242, 254, 0.2);
+        }
+
+        .card-date {
+            color: var(--text-muted); 
+            font-size: 0.85rem; 
+            font-weight: 500;
+        }
+
+        .card h2 { 
+            font-size: 1.6rem; 
+            margin: 0 0 15px 0; 
+            color: #fff; 
+            line-height: 1.3;
+        }
+
+        .card .summary { 
+            color: #94a3b8; 
+            font-size: 1.05rem; 
+            line-height: 1.6;
+            margin-bottom: 15px;
+            border-left: 3px solid var(--accent);
+            padding-left: 15px;
+        }
+
+        .card .body-text {
+            color: #cbd5e1;
+            font-size: 0.98rem;
+            line-height: 1.7;
+        }
+
+        footer { 
+            text-align: center; 
+            padding: 40px 20px; 
+            color: var(--text-muted); 
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 80px; 
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>AI Tech Pulse</h1>
-        <p>100% AI-Generated Technology News & Insights</p>
+        <div class="logo-container">
+            <div class="logo-icon"></div>
+            <h1>Techmetria</h1>
+        </div>
+        <p>Autonóm Mesterséges Intelligencia Hírportál</p>
     </header>
 
     <div class="container">
         <div class="news-grid">
-            
             <div class="card">
                 <div class="card-content">
-                    <span class="card-tag">Latest AI News</span>
-                    <p style="color: #60a5fa; font-weight: bold; margin-bottom: 5px;">2026-06-05 13:01</p>
-                    <h2>Out of the Shadows: Mira Murati’s Strategic Return to the AI Stage</h2>
-                    <p><strong>Former OpenAI mastermind Mira Murati is stepping back into the public eye, proving that in the hyper-competitive AI race, staying quiet for too long is a luxury no leader can afford.</strong></p>
-                    <p>For months, the tech world has wondered what Mira Murati would do next. Following her high-profile departure from OpenAI, the former Chief Technology Officer chose a path of quiet contemplation, retreating from the public eye to plan her next moves in stealth mode. However, in today’s breakneck artificial intelligence gold rush, remaining "heads down" carries a stealth tax. In an industry where venture capital flows to the loudest voices and the most dazzling promises, prolonged silence can quickly translate to irrelevance. Recognizing this, Murati is beginning to carefully choreograph her return to the public arena, reminding investors and competitors alike that one of AI's most influential architects is ready for her second act.
-
-This calculated re-emergence is less about flashy product announcements and more about high-stakes strategic positioning. As Murati reportedly lays the groundwork for her own new AI venture—one that will inevitably require hundreds of millions of dollars in backing—making the right kind of noise is essential to capture the market's attention. In an ecosystem saturated with hype, her return is a masterclass in reputation management: a deliberate effort to signal stability, vision, and readiness to lead. For a tech world eager for the next industry-shifting breakthrough, Murati's step back into the spotlight isn't just a personal milestone; it's a declaration of intent that could reshape the AI hierarchy once again.</p>
+                    <div class="card-header-meta">
+                        <span class="card-tag">Rendszer</span>
+                        <div class="card-date">Online</div>
+                    </div>
+                    <h2>A Techmetria rendszer sikeresen elindult</h2>
+                    <p class="summary">Az automatizáció felkészült a globális technológiai hírek feldolgozására.</p>
+                    <p class="body-text">Üdvözöljük a saját, teljesen autonóm hírportálján. Amint az n8n munkafolyamat lefut, az AI által generált, friss technológiai cikkek automatikusan meg fognak jelenni ezen üzenet felett, valós időben. A dizájn és a struktúra készen áll.</p>
                 </div>
             </div>
 
@@ -45,7 +205,7 @@ This calculated re-emergence is less about flashy product announcements and more
     </div>
 
     <footer>
-        <p>&copy; 2026 AI Tech Pulse. Powered entirely by n8n & Google Gemini.</p>
+        <p>&copy; 2026 Techmetria. Powered by n8n & Google Gemini.</p>
     </footer>
 
 </body>
