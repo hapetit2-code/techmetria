@@ -1,142 +1,86 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techmetria - Autonóm Tech Hírek</title>
+    <style>
+        :root {
+            --bg-main: #090d16;
+            --bg-card: #131a2c;
+            --accent: #00f2fe;
+            --accent-gradient: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+            --text-main: #f1f5f9;
+            --text-muted: #64748b;
+        }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-main); color: var(--text-main); margin: 0; padding: 0; line-height: 1.6; }
+        header { background-color: rgba(19, 26, 44, 0.8); backdrop-filter: blur(10px); padding: 25px 20px; text-align: center; border-bottom: 1px solid rgba(0, 242, 254, 0.2); position: sticky; top: 0; z-index: 100; }
+        .logo-container { display: inline-flex; align-items: center; gap: 12px; }
+        .logo-icon { width: 32px; height: 32px; background: var(--accent-gradient); border-radius: 6px; transform: rotate(45deg); box-shadow: 0 0 15px rgba(0, 242, 254, 0.4); }
+        header h1 { margin: 0; font-size: 2.2rem; font-weight: 800; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        header p { margin: 8px 0 0 0; color: var(--text-muted); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 2px; }
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+        .news-grid { display: flex; flex-direction: column; gap: 30px; }
+        .card { background-color: var(--bg-card); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: all 0.3s ease; }
+        .card:hover { transform: translateY(-3px); border-color: rgba(0, 242, 254, 0.3); }
+        .card-content { padding: 30px; }
+        .card-header-meta { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+        .card-tag { background: rgba(0, 242, 254, 0.1); color: var(--accent); font-size: 0.75rem; padding: 4px 10px; border-radius: 20px; font-weight: 600; text-transform: uppercase; border: 1px solid rgba(0, 242, 254, 0.2); }
+        .card-date { color: var(--text-muted); font-size: 0.85rem; }
+        .card h2 { font-size: 1.6rem; margin: 0 0 15px 0; color: #fff; }
+        .card .summary { color: #94a3b8; font-size: 1.05rem; margin-bottom: 15px; border-left: 3px solid var(--accent); padding-left: 15px; }
+        .card .body-text { color: #cbd5e1; font-size: 0.98rem; }
+        footer { text-align: center; padding: 40px 20px; color: var(--text-muted); border-top: 1px solid rgba(255, 255, 255, 0.05); margin-top: 80px; }
+    </style>
+</head>
+<body>
 
+    <header>
+        <div class="logo-container"> <div class="logo-icon"></div> <h1>Techmetria</h1> </div>
+        <p>Autonóm Mesterséges Intelligencia Hírportál</p>
+    </header>
 
-            <div class="card">
-                <div class="card-content">
-                    <div class="card-header-meta">
-                        <span class="card-tag">Friss Hírek</span>
-                        <div class="card-date">2026-06-06 09:34</div>
-                    </div>
-                    <h2>AI Takes the Editor's Chair: Techmetria Launches Fully Autonomous Newsroom</h2>
-                    <p class="summary">A groundbreaking new tech portal called Techmetria has officially gone live, leveraging n8n automation and Google Gemini to deliver real-time, fully autonomous tech news.</p>
-                    <p class="body-text">The media landscape is witnessing a quiet revolution with the official launch of Techmetria, a cutting-edge tech news portal that runs entirely on autopilot. Featuring a sleek, modern user interface, Techmetria is designed to dynamically process and publish global technology news without requiring human editorial intervention. By integrating advanced automation directly into its core, the platform stands as a real-world showcase of how autonomous publishing can operate seamlessly and instantly in the digital age.<br><br>Under the hood, Techmetria's autonomous engine is driven by an elegant n8n workflow paired with Google's state-of-the-art Gemini AI model. This powerful combination allows the system to aggregate global updates, generate fresh, context-aware tech articles, and automatically publish them to the site's grid in real time. With its front-end design and backend pipeline fully operational, Techmetria is set to redefine how we consume tech journalism by offering an unfiltered, instantaneous window into the fast-moving tech ecosystem.</p>
-                </div>
-            </div>PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9Imh1Ij4KPGhlYWQ+CiAgICA8
-bWV0YSBjaGFyc2V0PSJVVEYtOCI+CiAgICA8bWV0YSBuYW1lPSJ2aWV3cG9y
-dCIgY29udGVudD0id2lkdGg9ZGV2aWNlLXdpZHRoLCBpbml0aWFsLXNjYWxl
-PTEuMCI+CiAgICA8dGl0bGU+VGVjaG1ldHJpYSAtIEF1dG9uw7NtIFRlY2gg
-SMOtcmVrPC90aXRsZT4KICAgIDxzdHlsZT4KICAgICAgICA6cm9vdCB7CiAg
-ICAgICAgICAgIC0tYmctbWFpbjogIzA5MGQxNjsKICAgICAgICAgICAgLS1i
-Zy1jYXJkOiAjMTMxYTJjOwogICAgICAgICAgICAtLWFjY2VudDogIzAwZjJm
-ZTsKICAgICAgICAgICAgLS1hY2NlbnQtZ3JhZGllbnQ6IGxpbmVhci1ncmFk
-aWVudCgxMzVkZWcsICMwMGYyZmUgMCUsICM0ZmFjZmUgMTAwJSk7CiAgICAg
-ICAgICAgIC0tdGV4dC1tYWluOiAjZjFmNWY5OwogICAgICAgICAgICAtLXRl
-eHQtbXV0ZWQ6ICM2NDc0OGI7CiAgICAgICAgfQoKICAgICAgICBib2R5IHsg
-CiAgICAgICAgICAgIGZvbnQtZmFtaWx5OiAnU2Vnb2UgVUknLCBSb2JvdG8s
-IHNhbnMtc2VyaWY7IAogICAgICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2
-YXIoLS1iZy1tYWluKTsgCiAgICAgICAgICAgIGNvbG9yOiB2YXIoLS10ZXh0
-LW1haW4pOyAKICAgICAgICAgICAgbWFyZ2luOiAwOyAKICAgICAgICAgICAg
-cGFkZGluZzogMDsKICAgICAgICAgICAgbGluZS1oZWlnaHQ6IDEuNjsKICAg
-ICAgICB9CgogICAgICAgIC8qIEZSQU5Lw5MgTE9Hw5Mgw4lTIEhFQURFUiAq
-LwogICAgICAgIGhlYWRlciB7IAogICAgICAgICAgICBiYWNrZ3JvdW5kLWNv
-bG9yOiByZ2JhKDE5LCAyNiwgNDQsIDAuOCk7CiAgICAgICAgICAgIGJhY2tk
-cm9wLWZpbHRlcjogYmx1cigxMHB4KTsKICAgICAgICAgICAgcGFkZGluZzog
-MjVweCAyMHB4OyAKICAgICAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyOyAK
-ICAgICAgICAgICAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkIHJnYmEoMCwg
-MjQyLCAyNTQsIDAuMik7CiAgICAgICAgICAgIHBvc2l0aW9uOiBzdGlja3k7
-CiAgICAgICAgICAgIHRvcDogMDsKICAgICAgICAgICAgei1pbmRleDogMTAw
-OwogICAgICAgIH0KCiAgICAgICAgLmxvZ28tY29udGFpbmVyIHsKICAgICAg
-ICAgICAgZGlzcGxheTogaW5saW5lLWZsZXg7CiAgICAgICAgICAgIGFsaWdu
-LWl0ZW1zOiBjZW50ZXI7CiAgICAgICAgICAgIGdhcDogMTJweDsKICAgICAg
-ICB9CgogICAgICAgIC8qIEJlw6lww610ZXR0IGdlb21ldHJpa3VzIHRlY2gg
-bG9nw7MgKi8KICAgICAgICAubG9nby1pY29uIHsKICAgICAgICAgICAgd2lk
-dGg6IDMycHg7CiAgICAgICAgICAgIGhlaWdodDogMzJweDsKICAgICAgICAg
-ICAgYmFja2dyb3VuZDogdmFyKC0tYWNjZW50LWdyYWRpZW50KTsKICAgICAg
-ICAgICAgYm9yZGVyLXJhZGl1czogNnB4OwogICAgICAgICAgICBwb3NpdGlv
-bjogcmVsYXRpdmU7CiAgICAgICAgICAgIHRyYW5zZm9ybTogcm90YXRlKDQ1
-ZGVnKTsKICAgICAgICAgICAgYm94LXNoYWRvdzogMCAwIDE1cHggcmdiYSgw
-LCAyNDIsIDI1NCwgMC40KTsKICAgICAgICB9CgogICAgICAgIC5sb2dvLWlj
-b246OmJlZm9yZSB7CiAgICAgICAgICAgIGNvbnRlbnQ6ICcnOwogICAgICAg
-ICAgICBwb3NpdGlvbjogYWJzb2x1dGU7CiAgICAgICAgICAgIHRvcDogMjUl
-OwogICAgICAgICAgICBsZWZ0OiAyNSU7CiAgICAgICAgICAgIHdpZHRoOiA1
-MCU7CiAgICAgICAgICAgIGhlaWdodDogNTAlOwogICAgICAgICAgICBiYWNr
-Z3JvdW5kOiB2YXIoLS1iZy1tYWluKTsKICAgICAgICAgICAgYm9yZGVyLXJh
-ZGl1czogMnB4OwogICAgICAgIH0KCiAgICAgICAgaGVhZGVyIGgxIHsgCiAg
-ICAgICAgICAgIG1hcmdpbjogMDsgCiAgICAgICAgICAgIGZvbnQtc2l6ZTog
-Mi4ycmVtOyAKICAgICAgICAgICAgZm9udC13ZWlnaHQ6IDgwMDsKICAgICAg
-ICAgICAgbGV0dGVyLXNwYWNpbmc6IDFweDsKICAgICAgICAgICAgYmFja2dy
-b3VuZDogdmFyKC0tYWNjZW50LWdyYWRpZW50KTsKICAgICAgICAgICAgLXdl
-YmtpdC1iYWNrZ3JvdW5kLWNsaXA6IHRleHQ7CiAgICAgICAgICAgIC13ZWJr
-aXQtdGV4dC1maWxsLWNvbG9yOiB0cmFuc3BhcmVudDsKICAgICAgICB9Cgog
-ICAgICAgIGhlYWRlciBwIHsgCiAgICAgICAgICAgIG1hcmdpbjogOHB4IDAg
-MCAwOyAKICAgICAgICAgICAgY29sb3I6IHZhcigtLXRleHQtbXV0ZWQpOyAK
-ICAgICAgICAgICAgZm9udC1zaXplOiAwLjk1cmVtOwogICAgICAgICAgICB0
-ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlOwogICAgICAgICAgICBsZXR0ZXIt
-c3BhY2luZzogMnB4OwogICAgICAgIH0KCiAgICAgICAgLmNvbnRhaW5lciB7
-IAogICAgICAgICAgICBtYXgtd2lkdGg6IDExMDBweDsgCiAgICAgICAgICAg
-IG1hcmdpbjogNDBweCBhdXRvOyAKICAgICAgICAgICAgcGFkZGluZzogMCAy
-MHB4OyAKICAgICAgICB9CgogICAgICAgIC5uZXdzLWdyaWQgeyAKICAgICAg
-ICAgICAgZGlzcGxheTogZmxleDsKICAgICAgICAgICAgZmxleC1kaXJlY3Rp
-b246IGNvbHVtbjsKICAgICAgICAgICAgZ2FwOiAzMHB4OyAKICAgICAgICB9
-CgogICAgICAgIC8qIENTSU5PU8ONVE9UVCBLw4FSVFnDgUsgKi8KICAgICAg
-ICAuY2FyZCB7IAogICAgICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIo
-LS1iZy1jYXJkKTsgCiAgICAgICAgICAgIGJvcmRlci1yYWRpdXM6IDEycHg7
-IAogICAgICAgICAgICBvdmVyZmxvdzogaGlkZGVuOyAKICAgICAgICAgICAg
-Ym9yZGVyOiAxcHggc29saWQgcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjA1KTsK
-ICAgICAgICAgICAgYm94LXNoYWRvdzogMCAxMHB4IDMwcHggcmdiYSgwLDAs
-MCwwLjIpOyAKICAgICAgICAgICAgdHJhbnNpdGlvbjogYWxsIDAuM3MgZWFz
-ZTsKICAgICAgICB9CgogICAgICAgIC5jYXJkOmhvdmVyIHsgCiAgICAgICAg
-ICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgtM3B4KTsgCiAgICAgICAgICAg
-IGJvcmRlci1jb2xvcjogcmdiYSgwLCAyNDIsIDI1NCwgMC4zKTsKICAgICAg
-ICAgICAgYm94LXNoYWRvdzogMCAxNXB4IDM1cHggcmdiYSgwLCAyNDIsIDI1
-NCwgMC4wOCk7CiAgICAgICAgfQoKICAgICAgICAuY2FyZC1jb250ZW50IHsg
-CiAgICAgICAgICAgIHBhZGRpbmc6IDMwcHg7IAogICAgICAgIH0KCiAgICAg
-ICAgLmNhcmQtaGVhZGVyLW1ldGEgewogICAgICAgICAgICBkaXNwbGF5OiBm
-bGV4OwogICAgICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyOwogICAgICAg
-ICAgICBnYXA6IDE1cHg7CiAgICAgICAgICAgIG1hcmdpbi1ib3R0b206IDE1
-cHg7CiAgICAgICAgfQoKICAgICAgICAuY2FyZC10YWcgeyAKICAgICAgICAg
-ICAgYmFja2dyb3VuZDogcmdiYSgwLCAyNDIsIDI1NCwgMC4xKTsgCiAgICAg
-ICAgICAgIGNvbG9yOiB2YXIoLS1hY2NlbnQpOyAKICAgICAgICAgICAgZm9u
-dC1zaXplOiAwLjc1cmVtOyAKICAgICAgICAgICAgcGFkZGluZzogNHB4IDEw
-cHg7IAogICAgICAgICAgICBib3JkZXItcmFkaXVzOiAyMHB4OyAKICAgICAg
-ICAgICAgZm9udC13ZWlnaHQ6IDYwMDsKICAgICAgICAgICAgdGV4dC10cmFu
-c2Zvcm06IHVwcGVyY2FzZTsgCiAgICAgICAgICAgIGxldHRlci1zcGFjaW5n
-OiAxcHg7CiAgICAgICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHJnYmEoMCwg
-MjQyLCAyNTQsIDAuMik7CiAgICAgICAgfQoKICAgICAgICAuY2FyZC1kYXRl
-IHsKICAgICAgICAgICAgY29sb3I6IHZhcigtLXRleHQtbXV0ZWQpOyAKICAg
-ICAgICAgICAgZm9udC1zaXplOiAwLjg1cmVtOyAKICAgICAgICAgICAgZm9u
-dC13ZWlnaHQ6IDUwMDsKICAgICAgICB9CgogICAgICAgIC5jYXJkIGgyIHsg
-CiAgICAgICAgICAgIGZvbnQtc2l6ZTogMS42cmVtOyAKICAgICAgICAgICAg
-bWFyZ2luOiAwIDAgMTVweCAwOyAKICAgICAgICAgICAgY29sb3I6ICNmZmY7
-IAogICAgICAgICAgICBsaW5lLWhlaWdodDogMS4zOwogICAgICAgIH0KCiAg
-ICAgICAgLmNhcmQgLnN1bW1hcnkgeyAKICAgICAgICAgICAgY29sb3I6ICM5
-NGEzYjg7IAogICAgICAgICAgICBmb250LXNpemU6IDEuMDVyZW07IAogICAg
-ICAgICAgICBsaW5lLWhlaWdodDogMS42OwogICAgICAgICAgICBtYXJnaW4t
-Ym90dG9tOiAxNXB4OwogICAgICAgICAgICBib3JkZXItbGVmdDogM3B4IHNv
-bGlkIHZhcigtLWFjY2VudCk7CiAgICAgICAgICAgIHBhZGRpbmctbGVmdDog
-MTVweDsKICAgICAgICB9CgogICAgICAgIC5jYXJkIC5ib2R5LXRleHQgewog
-ICAgICAgICAgICBjb2xvcjogI2NiZDVlMTsKICAgICAgICAgICAgZm9udC1z
-aXplOiAwLjk4cmVtOwogICAgICAgICAgICBsaW5lLWhlaWdodDogMS43Owog
-ICAgICAgIH0KCiAgICAgICAgZm9vdGVyIHsgCiAgICAgICAgICAgIHRleHQt
-YWxpZ246IGNlbnRlcjsgCiAgICAgICAgICAgIHBhZGRpbmc6IDQwcHggMjBw
-eDsgCiAgICAgICAgICAgIGNvbG9yOiB2YXIoLS10ZXh0LW11dGVkKTsgCiAg
-ICAgICAgICAgIGZvbnQtc2l6ZTogMC45cmVtOwogICAgICAgICAgICBib3Jk
-ZXItdG9wOiAxcHggc29saWQgcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjA1KTsK
-ICAgICAgICAgICAgbWFyZ2luLXRvcDogODBweDsgCiAgICAgICAgfQogICAg
-PC9zdHlsZT4KPC9oZWFkPgo8Ym9keT4KCiAgICA8aGVhZGVyPgogICAgICAg
-IDxkaXYgY2xhc3M9ImxvZ28tY29udGFpbmVyIj4KICAgICAgICAgICAgPGRp
-diBjbGFzcz0ibG9nby1pY29uIj48L2Rpdj4KICAgICAgICAgICAgPGgxPlRl
-Y2htZXRyaWE8L2gxPgogICAgICAgIDwvZGl2PgogICAgICAgIDxwPkF1dG9u
-w7NtIE1lc3RlcnPDqWdlcyBJbnRlbGxpZ2VuY2lhIEjDrXJwb3J0w6FsPC9w
-PgogICAgPC9oZWFkZXI+CgogICAgPGRpdiBjbGFzcz0iY29udGFpbmVyIj4K
-ICAgICAgICA8ZGl2IGNsYXNzPSJuZXdzLWdyaWQiPgogICAgICAgICAgICA8
-ZGl2IGNsYXNzPSJjYXJkIj4KICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9
-ImNhcmQtY29udGVudCI+CiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFz
-cz0iY2FyZC1oZWFkZXItbWV0YSI+CiAgICAgICAgICAgICAgICAgICAgICAg
-IDxzcGFuIGNsYXNzPSJjYXJkLXRhZyI+UmVuZHN6ZXI8L3NwYW4+CiAgICAg
-ICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9ImNhcmQtZGF0ZSI+T25s
-aW5lPC9kaXY+CiAgICAgICAgICAgICAgICAgICAgPC9kaXY+CiAgICAgICAg
-ICAgICAgICAgICAgPGgyPkEgVGVjaG1ldHJpYSByZW5kc3plciBzaWtlcmVz
-ZW4gZWxpbmR1bHQ8L2gyPgogICAgICAgICAgICAgICAgICAgIDxwIGNsYXNz
-PSJzdW1tYXJ5Ij5BeiBhdXRvbWF0aXrDoWNpw7MgZmVsa8Opc3rDvGx0IGEg
-Z2xvYsOhbGlzIHRlY2hub2zDs2dpYWkgaMOtcmVrIGZlbGRvbGdvesOhc8Oh
-cmEuPC9wPgogICAgICAgICAgICAgICAgICAgIDxwIGNsYXNzPSJib2R5LXRl
-eHQiPsOcZHbDtnrDtmxqw7xrIGEgc2Fqw6F0LCB0ZWxqZXNlbiBhdXRvbsOz
-bSBow61ycG9ydMOhbGrDoW4uIEFtaW50IGF6IG44biBtdW5rYWZvbHlhbWF0
-IGxlZnV0LCBheiBBSSDDoWx0YWwgZ2VuZXLDoWx0LCBmcmlzcyB0ZWNobm9s
-w7NnaWFpIGNpa2tlayBhdXRvbWF0aWt1c2FuIG1lZyBmb2duYWsgamVsZW5u
-aSBlemVuIMO8emVuZXQgZmVsZXR0LCB2YWzDs3MgaWTFkWJlbi4gQSBkaXrD
-oWpuIMOpcyBhIHN0cnVrdMO6cmEga8Opc3plbiDDoWxsLjwvcD4KICAgICAg
-ICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICA8L2Rpdj4KCiAgICAgICAg
-PC9kaXY+CiAgICA8L2Rpdj4KCiAgICA8Zm9vdGVyPgogICAgICAgIDxwPiZj
-b3B5OyAyMDI2IFRlY2htZXRyaWEuIFBvd2VyZWQgYnkgbjhuICYgR29vZ2xl
-IEdlbWluaS48L3A+CiAgICA8L2Zvb3Rlcj4KCjwvYm9keT4KPC9odG1sPgo=
+    <div class="container">
+        <div id="news-grid" class="news-grid">
+            <p id="loading-text">Hírek betöltése...</p>
+        </div>
+    </div>
+
+    <footer> <p>&copy; 2026 Techmetria. Powered by n8n & Google Gemini.</p> </footer>
+
+    <script>
+        fetch('articles.json')
+            .then(response => response.json())
+            .then(articles => {
+                const grid = document.getElementById('news-grid');
+                grid.innerHTML = ''; // Töröljük a betöltés szöveget
+                
+                if(articles.length === 0) {
+                    grid.innerHTML = '<p>Még nincsenek hírek.</p>';
+                    return;
+                }
+
+                articles.forEach(art => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.innerHTML = `
+                        <div class="card-content">
+                            <div class="card-header-meta">
+                                <span class="card-tag">Friss Hírek</span>
+                                <div class="card-date">${art.date}</div>
+                            </div>
+                            <h2>${art.title}</h2>
+                            <p class="summary">${art.summary}</p>
+                            <p class="body-text">${art.body.replace(/\n/g, '<br>')}</p>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            })
+            .catch(err => {
+                console.error("Hiba a hírek betöltésekor:", err);
+                document.getElementById('news-grid').innerHTML = '<p>Hiba történt a hírek betöltése közben. Úgy tűnik, még nem futott le az első automatizáció.</p>';
+            });
+    </script>
+</body>
+</html>
