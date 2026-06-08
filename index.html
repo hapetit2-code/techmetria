@@ -13,7 +13,7 @@
             --text-main: #f1f5f9;
             --text-muted: #64748b;
         }
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-main); color: var(--text-main); margin: 0; padding: 0; line-height: 1.6; }
+        body { font-family: 'Segoe UI', Roboto, sans-serif; background-color: var(--bg-main); color: var(--text-main); margin: 0; padding: 0; line-height: 1.6; }
         header { background-color: rgba(19, 26, 44, 0.8); backdrop-filter: blur(10px); padding: 25px 20px; text-align: center; border-bottom: 1px solid rgba(0, 242, 254, 0.2); position: sticky; top: 0; z-index: 100; }
         .logo-container { display: inline-flex; align-items: center; gap: 12px; }
         .logo-icon { width: 32px; height: 32px; background: var(--accent-gradient); border-radius: 6px; transform: rotate(45deg); box-shadow: 0 0 15px rgba(0, 242, 254, 0.4); }
@@ -22,7 +22,7 @@
         .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
         .news-grid { display: flex; flex-direction: column; gap: 30px; }
         .card { background-color: var(--bg-card); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: all 0.3s ease; }
-        .card:hover { transform: translateY(-3px); border-color: rgba(0, 242, 254, 0.3); }
+        .card:hover { transform: translateY(-3px); border-color: rgba(0, 242, 254, 0.3); box-shadow: 0 15px 35px rgba(0, 242, 254, 0.08); }
         .card-content { padding: 30px; }
         .card-header-meta { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
         .card-tag { background: rgba(0, 242, 254, 0.1); color: var(--accent); font-size: 0.75rem; padding: 4px 10px; border-radius: 20px; font-weight: 600; text-transform: uppercase; border: 1px solid rgba(0, 242, 254, 0.2); }
@@ -30,37 +30,45 @@
         .card h2 { font-size: 1.6rem; margin: 0 0 15px 0; color: #fff; }
         .card .summary { color: #94a3b8; font-size: 1.05rem; margin-bottom: 15px; border-left: 3px solid var(--accent); padding-left: 15px; }
         .card .body-text { color: #cbd5e1; font-size: 0.98rem; }
-        footer { text-align: center; padding: 40px 20px; color: var(--text-muted); border-top: 1px solid rgba(255, 255, 255, 0.05); margin-top: 80px; }
+        footer { text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid rgba(255, 255, 255, 0.05); margin-top: 80px; }
+        #loading { text-align: center; color: var(--text-muted); font-style: italic; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-container"> <div class="logo-icon"></div> <h1>Techmetria</h1> </div>
+        <div class="logo-container">
+            <div class="logo-icon"></div>
+            <h1>Techmetria</h1>
+        </div>
         <p>Autonóm Mesterséges Intelligencia Hírportál</p>
     </header>
 
     <div class="container">
-        <div id="news-grid" class="news-grid">
-            <p id="loading-text">Hírek betöltése...</p>
-        </div>
+        <div id="loading">Hírek betöltése...</div>
+        <div class="news-grid" id="news-grid"></div>
     </div>
 
-    <footer> <p>&copy; 2026 Techmetria. Powered by n8n & Google Gemini.</p> </footer>
+    <footer>
+        <p>&copy; 2026 Techmetria. Powered by n8n & Google Gemini.</p>
+    </footer>
 
     <script>
-        fetch('articles.json')
+        // Betöltjük a cikkeket a JSON fájlból
+        // A 'cache: "no-store"' biztosítja, hogy a böngésző mindig a legfrissebb JSON-t kérje le
+        fetch('articles.json', { cache: "no-store" })
             .then(response => response.json())
             .then(articles => {
+                document.getElementById('loading').style.display = 'none';
                 const grid = document.getElementById('news-grid');
-                grid.innerHTML = ''; // Töröljük a betöltés szöveget
                 
-                if(articles.length === 0) {
-                    grid.innerHTML = '<p>Még nincsenek hírek.</p>';
+                if(!articles || articles.length === 0) {
+                    grid.innerHTML = '<p style="text-align:center; color:gray;">Még nincsenek hírek.</p>';
                     return;
                 }
 
-                articles.forEach(art => {
+                // Megfordítjuk a listát, hogy a legfrissebb legyen legfelül
+                articles.reverse().forEach(art => {
                     const card = document.createElement('div');
                     card.className = 'card';
                     card.innerHTML = `
@@ -78,8 +86,8 @@
                 });
             })
             .catch(err => {
-                console.error("Hiba a hírek betöltésekor:", err);
-                document.getElementById('news-grid').innerHTML = '<p>Hiba történt a hírek betöltése közben. Úgy tűnik, még nem futott le az első automatizáció.</p>';
+                document.getElementById('loading').innerText = 'Hiba történt a hírek betöltése közben.';
+                console.error(err);
             });
     </script>
 </body>
